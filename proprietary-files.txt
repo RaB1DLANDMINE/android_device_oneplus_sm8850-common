@@ -521,7 +521,6 @@ vendor/bin/init.kernel.post_boot-canoe_5_1.sh
 vendor/bin/init.kernel.post_boot-canoe_5_2.sh
 vendor/bin/init.kernel.post_boot-canoe_6_1.sh
 vendor/bin/init.kernel.post_boot-canoe_default_6_2.sh
-vendor/bin/init.kernel.post_boot-memory.sh
 vendor/bin/init.kernel.post_boot.sh
 vendor/bin/init.qcom.class_core.sh
 vendor/bin/init.qti.kernel.debug-alor.sh

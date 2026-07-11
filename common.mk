@@ -190,6 +190,7 @@ PRODUCT_PACKAGES += \
     fstab.qcom.vendor_ramdisk \
     init.class_main.sh \
     init.oplus.rc \
+    init.kernel.post_boot-memory.sh \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
     init.qcom.rc \
