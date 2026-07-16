@@ -646,14 +646,6 @@ odm/etc/init/init.oppo.reserve.rc
 # Native public libraries
 vendor/etc/public.libraries.txt
 
-# OPLUS Charger
-odm/bin/hw/gauged
-odm/bin/hw/ufcsd
-odm/bin/hw/wlschgd
-odm/etc/vintf/manifest/manifest_oplus_charger_aidl.xml
-odm/etc/charge.cfg
-odm/lib64/libGaiaClient_vnd.so
-
 # OPLUS Display
 odm/bin/hw/vendor.oplus.hardware.displaypanelfeature-service
 odm/bin/cwb_utils_aidl
