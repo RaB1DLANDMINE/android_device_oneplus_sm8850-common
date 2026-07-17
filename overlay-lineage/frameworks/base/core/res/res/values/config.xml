@@ -10,6 +10,12 @@
     <!-- Whether device has VOOC charging support -->
     <bool name="config_hasVoocCharger">true</bool>
 
-    <!-- Path to fast charging status file to detect whether an oem fast charger is active -->
-    <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/oplus_chg/battery/voocchg_ing</string>
+    <!-- Path to fast charging status file to detect whether an oem fast charger is active.
+         `fast_charge` is the umbrella OnePlus fast-charge flag: it reads "1" for BOTH VOOC and
+         UFCS/PPS (SuperVOOC) sessions, whereas `voocchg_ing` only covers legacy VOOC (it stays 0
+         on macanc's UFCS charging, which is why the lock screen used to fall back to "charging
+         slowly"). `ppschg_ing` reads a state code (e.g. "3"), not "1", so it can't be matched
+         directly. Keep voocchg_ing as the secondary path for redundancy. -->
+    <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/oplus_chg/battery/fast_charge</string>
+    <string name="config_oemFastChargerStatusPath2" translatable="false">/sys/class/oplus_chg/battery/voocchg_ing</string>
 </resources>
