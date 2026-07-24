@@ -18,4 +18,14 @@
          directly. Keep voocchg_ing as the secondary path for redundancy. -->
     <string name="config_oemFastChargerStatusPath" translatable="false">/sys/class/oplus_chg/battery/fast_charge</string>
     <string name="config_oemFastChargerStatusPath2" translatable="false">/sys/class/oplus_chg/battery/voocchg_ing</string>
+
+    <!-- Back gesture sensitivity multipliers for the Low/Medium/High slider stops.
+         AOSP's Low stop is 0.75x, which collapses the edge inset so narrow it barely
+         registers on this panel. Raise Low to 0.90x (still usable) and Medium to
+         1.00x (a good normal width); High stays 1.33x. -->
+    <array name="config_backGestureInsetScales">
+        <item>0.90</item>
+        <item>1.00</item>
+        <item>1.33</item>
+    </array>
 </resources>
