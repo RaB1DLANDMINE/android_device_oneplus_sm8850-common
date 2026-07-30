@@ -111,7 +111,7 @@ blob_fixups: blob_fixups_user_type = {
         'vendor/etc/media_codecs_canoe_v3.xml',
     ): blob_fixup()
         .regex_replace('.*media_codecs_(google_audio|google_c2|google_telephony|google_video|vendor_audio).*\n', '')
-        .regex_replace(r'([ \t]*</MediaCodecs>)', r'    <Include href="media_codecs_dolby_vision.xml" />\n\1'),
+        .regex_replace(r'([ \t]*</MediaCodecs>)', r'    <Include href="media_codecs_dolby_vision.xml" />\n    <Include href="media_codecs_dolby_audio.xml" />\n\1'),
     (
         'vendor/lib64/hw/android.hardware.bluetooth.audio_sw.so',
         'vendor/lib64/hw/libaudiocorehal.default.so',
@@ -166,7 +166,7 @@ blob_fixups: blob_fixups_user_type = {
         )
         .add_needed('libbase.so'),
     'vendor/usr/keylayout/gpio-keys.kl': blob_fixup()
-        .add_line_if_missing('key 735   ASSIST'),
+        .add_line_if_missing('key 735   ASSIST   WAKE'),
     'vendor/etc/public.libraries.txt': blob_fixup()
         .add_line_if_missing('libapsfixup.so')
         .add_line_if_missing('libarcsoft_hdr_couple_api.so')
