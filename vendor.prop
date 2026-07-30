@@ -17,6 +17,11 @@ vendor.audio.adm.buffering.ms=3
 vendor.audio.c2.preferred=true
 vendor.audio.compress_capture.aac=true
 vendor.audio.compress_capture.enabled=true
+# A2DP hardware offload ENABLED. Offloadable codecs (SBC/AAC/aptX/LDAC) use the DSP.
+# LHDC (a software Savitech codec, not DSP-offloadable) is handled by the AudioPolicyManager
+# per-codec routing patch: the BT stack opens a software session for LHDC on its own, and
+# APM routes it to the software "bluetooth" HAL module instead of the "primary" (PAL) offload
+# module. See frameworks/av AudioPolicyManager::a2dpRequiresSoftwareModule().
 vendor.audio.feature.a2dp_offload.enable=true
 vendor.audio.feature.battery_listener.enable=true
 vendor.audio.feature.dmabuf.cma.memory.enable=false
@@ -74,6 +79,10 @@ bluetooth.profile.vcp.controller.enabled=true
 persist.bluetooth.a2dp.lhdc=true
 persist.bluetooth.a2dp_aac_abr.enable=true
 persist.bluetooth.a2dp_offload.cap=sbc-aac-aptx-aptxhd-ldac
+# A2DP offload ENABLED (dynamic hybrid): offloadable codecs use the DSP; LHDC is routed
+# to the software HAL module by the AudioPolicyManager per-codec patch. Setting this =true
+# forces the all-software fallback (AudioPolicyManager strips A2DP from the primary module
+# at load) — use only to isolate routing-vs-session issues.
 persist.bluetooth.a2dp_offload.disabled=false
 persist.bluetooth.absvolume_support=true
 persist.bluetooth.airpods_support=false

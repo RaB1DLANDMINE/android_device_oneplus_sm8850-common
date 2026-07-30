@@ -6,7 +6,7 @@
 # slot so a custom recovery survives the seamless update. init runs it as root, so no
 # app-side root is needed.
 type keep_recovery, domain, coredomain;
-type keep_recovery_exec, exec_type, file_type;
+type keep_recovery_exec, system_file_type, exec_type, file_type;
 
 init_daemon_domain(keep_recovery)
 
