@@ -97,3 +97,16 @@ sh_binary {
     src: "init.qcom.sh",
     vendor: true,
 }
+
+sh_binary {
+    name: "keep_recovery.sh",
+    src: "keep_recovery.sh",
+    system_ext_specific: true,
+}
+
+prebuilt_etc {
+    name: "keep_recovery.rc",
+    src: "keep_recovery.rc",
+    sub_dir: "init",
+    system_ext_specific: true,
+}

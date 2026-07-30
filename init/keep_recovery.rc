@@ -1,0 +1,10 @@
+# Preserve a custom recovery across an A/B OTA. The Updater raises the trigger property
+# once an update is staged; init runs the copy as root (see keep_recovery.sh / .te).
+service keep_recovery /system_ext/bin/keep_recovery.sh
+    user root
+    group root
+    disabled
+    oneshot
+
+on property:sys.updater.keep_recovery=1
+    start keep_recovery

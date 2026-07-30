@@ -1,0 +1,3 @@
+# Trigger the keep_recovery service (see keep_recovery.te). Raised by the Updater
+# (updater_app) after an A/B update is staged; consumed by init to start the copy.
+system_public_prop(updater_keep_recovery_prop)

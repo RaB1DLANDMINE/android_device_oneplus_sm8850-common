@@ -270,5 +270,14 @@ WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WIFI_HIDL_UNIFIED_SUPPLICANT_SERVICE_RC_ENTRY := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
+# Dolby Atmos (DAX3, AIDL) sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += hardware/dolby/sepolicy/vendor
+
+# ViPER4Android RE (AIDL) sepolicy
+BOARD_VENDOR_SEPOLICY_DIRS += hardware/viper4android/sepolicy/vendor
+
+# Keep-custom-recovery service (Updater) sepolicy
+SYSTEM_EXT_PRIVATE_SEPOLICY_DIRS += device/oneplus/sm8850-common/sepolicy/private
+
 # Include the proprietary files BoardConfig.
 include vendor/oneplus/sm8850-common/BoardConfigVendor.mk

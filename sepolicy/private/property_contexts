@@ -1,0 +1,1 @@
+sys.updater.keep_recovery    u:object_r:updater_keep_recovery_prop:s0

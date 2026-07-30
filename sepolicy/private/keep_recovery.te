@@ -1,0 +1,27 @@
+# Preserve a custom recovery across an A/B OTA.
+#
+# update_engine writes the OTA (including a stock recovery) to the inactive slot. This
+# oneshot service, started by init when the Updater raises sys.updater.keep_recovery=1,
+# copies the currently-running slot's recovery partition onto the other (just-updated)
+# slot so a custom recovery survives the seamless update. init runs it as root, so no
+# app-side root is needed.
+type keep_recovery, domain, coredomain;
+type keep_recovery_exec, exec_type, file_type;
+
+init_daemon_domain(keep_recovery)
+
+# Copy recovery_<cur> -> recovery_<other> via the /dev/block/by-name symlinks.
+allow keep_recovery block_device:dir search;
+allow keep_recovery block_device:lnk_file read;
+allow keep_recovery recovery_block_device:blk_file rw_file_perms;
+
+# The service is a shell script that shells out to toybox (dd / getprop / setprop).
+allow keep_recovery shell_exec:file rx_file_perms;
+allow keep_recovery toolbox_exec:file rx_file_perms;
+
+# Read the current slot suffix; clear the trigger so the next update re-arms cleanly.
+get_prop(keep_recovery, exported_default_prop)
+set_prop(keep_recovery, updater_keep_recovery_prop)
+
+# Allow the Updater (updater_app, defined in device/lineage/sepolicy) to raise the trigger.
+set_prop(updater_app, updater_keep_recovery_prop)
